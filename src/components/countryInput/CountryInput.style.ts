@@ -17,3 +17,14 @@ export const InputButton = styled.button`
         background-color: skyblue;
     }
 `;
+
+export const CountryInputContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    & input {
+        margin: 0px 5px;
+    }
+`;
