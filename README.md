@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 ## steps to run the app
-##### 1: git clone cors proxy server repository from "https://github.com/Stevvvvvi/expressjsproxy" and "npm install" and run "node app.js" to start cors bypass proxy (we need to run a proxy server to bypass cors check from openweathermap.org)
+##### 1: git clone cors proxy server repository from "https://github.com/Stevvvvvi/expressjsproxy" in main branch and "npm install" and run "node app.js" to start cors bypass proxy (we need to run a proxy server to bypass cors check from openweathermap.org)
 ##### 2: git clone this project 
 ##### 3: inside root folder where package.json located, copy ".env" file into here (I have send the env file to Brock through email)
 ##### 4: run "npm install"
