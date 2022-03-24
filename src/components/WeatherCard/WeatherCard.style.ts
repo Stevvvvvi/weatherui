@@ -23,6 +23,9 @@ export const WeatherCardContainer = styled.div<any>`
         i {
             font-weight: 900;
             transform: scale(3);
+            background: linear-gradient(0deg, hsla(349, 55%, 30%, 1) 13%, hsla(0, 72%, 79%, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         & .card-temperature {
             font-weight: 800;

@@ -4,6 +4,7 @@ import { RootStateType } from "../../reducers";
 import { WeatherCardContainer } from "./WeatherCard.style";
 import "../../weatherIcon/weather-icons.min.css";
 import { rainFontMapping } from "../../helpers/objects";
+import { convertEpochToCurrentTime, convertEpochToSpecificTimezone } from "../../helpers/helperFunctions";
 
 const WeatherCard=({weatherData, timezoneOffset, currentWeather}:{weatherData:any, timezoneOffset:number, currentWeather: boolean})=>{
 	const weatherDate = convertEpochToSpecificTimezone(weatherData.dt);
@@ -25,20 +26,6 @@ const WeatherCard=({weatherData, timezoneOffset, currentWeather}:{weatherData:an
 		</WeatherCardContainer>
 	);
 };
-
-function convertEpochToSpecificTimezone(timeEpoch: number){
-	const d = new Date(0);
-	d.setUTCSeconds(timeEpoch);
-	const returnValue = d.toDateString()?.split(" ");
-	returnValue.pop();
-	return returnValue.join(" ");
-}
-
-function convertEpochToCurrentTime(timeEpoch: number){
-	const d = new Date(0);
-	d.setUTCSeconds(timeEpoch);
-	return d.toTimeString().split(" ")[0];
-}
 
 
 export default WeatherCard;
