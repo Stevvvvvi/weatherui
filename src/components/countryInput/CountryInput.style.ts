@@ -26,5 +26,11 @@ export const CountryInputContainer = styled.div`
     align-items: center;
     & input {
         margin: 0px 5px;
+        border: none;
+        border-bottom: 1px solid black;
+        background: transparent;
+        &:focus{
+            outline: none;
+        }
     }
 `;

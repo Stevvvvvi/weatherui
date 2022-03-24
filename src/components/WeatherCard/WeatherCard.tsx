@@ -6,23 +6,39 @@ import "../../weatherIcon/weather-icons.min.css";
 import { rainFontMapping } from "../../helpers/objects";
 
 const WeatherCard=({weatherData, timezoneOffset, currentWeather}:{weatherData:any, timezoneOffset:number, currentWeather: boolean})=>{
-	const weatherDate = convertEpochToSpecificTimezone(weatherData.dt, timezoneOffset);
+	const weatherDate = convertEpochToSpecificTimezone(weatherData.dt);
+	const rainFont = rainFontMapping.find((e)=>e.main==weatherData.weather[0]?.main);
 	return (
-		<WeatherCardContainer className="tilt-card">
+		<WeatherCardContainer className="tilt-card" backgroundColor={rainFont?.background}>
 			<div className="card-text">
-				<i className={`wi ${rainFontMapping.find((e)=>e.main==weatherData.weather[0]?.main)?.weatherFont}`}></i>
-				{weatherData.weather[0]?.main || ""}
-				{weatherDate}
+				<div>{weatherDate}</div>
+				{currentWeather && <div>{convertEpochToCurrentTime(weatherData.dt)}</div>}
+				<div className="card-icon">
+					<i className={`wi ${rainFont?.weatherFont}`}></i>
+				</div>
+				<div>
+					<div>{weatherData.weather[0]?.description || ""}</div>
+					<div className="card-temperature">{(weatherData.temp - 273.15 || weatherData.temp.day - 273.15)?.toFixed(1)} °C</div>
+				</div>
+				
 			</div>
 		</WeatherCardContainer>
 	);
 };
 
-function convertEpochToSpecificTimezone(timeEpoch: number, offset: number){
+function convertEpochToSpecificTimezone(timeEpoch: number){
 	const d = new Date(0);
 	d.setUTCSeconds(timeEpoch);
-	//const utc = d.getTime() ;  //This converts to UTC 00:00
-	//const nd = new Date(utc);
-	return d.toLocaleString();
+	const returnValue = d.toDateString()?.split(" ");
+	returnValue.pop();
+	return returnValue.join(" ");
 }
+
+function convertEpochToCurrentTime(timeEpoch: number){
+	const d = new Date(0);
+	d.setUTCSeconds(timeEpoch);
+	return d.toTimeString().split(" ")[0];
+}
+
+
 export default WeatherCard;
