@@ -6,4 +6,9 @@ export const WeatherCardContainer = styled.div`
     height: 200px;
     box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.38);
     border-radius: 5px;
+    & .card-text{
+        i {
+            transform: scale(3);
+        }
+    }
 `;

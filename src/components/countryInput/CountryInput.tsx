@@ -17,7 +17,7 @@ const CountryInput=()=>{
 	return (
 		<CountryInputContainer>
 			<label htmlFor="country-input">Please type in a country: </label>
-			<input type="text" id="country-input" value={country} onKeyDown={handleKeyDown} onChange={(e)=>setCountry(e.currentTarget.value)} />
+			<input type="text" id="country-input" aria-label="country-input" value={country} onKeyDown={handleKeyDown} onChange={(e)=>setCountry(e.currentTarget.value)} />
 			<InputButton data-testid="confirm-button" type="submit" onClick={handleGetWeatherData}>Confirm</InputButton>
 		</CountryInputContainer>
 	);

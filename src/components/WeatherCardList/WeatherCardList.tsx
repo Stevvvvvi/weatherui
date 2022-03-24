@@ -17,15 +17,15 @@ const WeatherCardList=()=>{
 		<div>
 			{!weatherReducer.loading && weatherReducer.data && <div>
 				<div>
-					<h3>Current Weather</h3>
-					<WeatherCard weatherData={weatherReducer.data.current} timezoneOffset={weatherReducer.data.timezone_offset} />
+					<h3 aria-label="current-weather">Current Weather</h3>
+					<WeatherCard weatherData={weatherReducer.data.current} currentWeather={true} timezoneOffset={weatherReducer.data.timezone_offset} />
 				</div>
 				<div>
 					<h3>Daily Forecast</h3>
 					<div>
 						{
 							weatherReducer.data.daily?.map((dayData:any, index: number)=>
-								<WeatherCard key={"forecast"+index} weatherData={dayData} timezoneOffset={weatherReducer.data.timezone_offset}/>
+								<WeatherCard key={"forecast"+index} weatherData={dayData} currentWeather={false} timezoneOffset={weatherReducer.data.timezone_offset}/>
 							)
 						}
 					</div>

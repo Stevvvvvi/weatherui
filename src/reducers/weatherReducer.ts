@@ -1,4 +1,4 @@
-import { GetCityCoodinateRequest, GetCityWeather, GetCityWeatherFailed, GetCityWeatherFulfilled } from "../actions/actionTypes";
+import { GetCityCoodinateFailed, GetCityCoodinateRequest, GetCityWeather, GetCityWeatherFailed, GetCityWeatherFulfilled } from "../actions/actionTypes";
 import { WeatherActionType } from "../actions/weatherActions";
 
 export type WeatherReducerType={
@@ -29,6 +29,7 @@ const WeatherReducer = (state = initialState, action: WeatherActionType) => {
 			errorMessage: null,
 		};
 	case GetCityWeatherFailed:
+	case GetCityCoodinateFailed:
 		return {
 			...state,
 			loading: false,
