@@ -9,7 +9,7 @@ const WeatherCardList=()=>{
 	const weatherReducer = useSelector((rootState: RootStateType)=>rootState.WeatherReducer);
 	useEffect(()=>{
 		VanillaTilt.init(document.querySelectorAll<HTMLElement>(".tilt-card") as any, {
-			max: 18,
+			max: 25,
 			speed: 400,
 			scale: 1.1,
 		});
@@ -23,7 +23,7 @@ const WeatherCardList=()=>{
 					<WeatherCard weatherData={weatherReducer.data.current} currentWeather={true} timezoneOffset={weatherReducer.data.timezone_offset} />
 				</div>
 				<div>
-					<h3>Daily Forecast</h3>
+					<h3 aria-label="forecast-weather">Daily Forecast</h3>
 					<div className="forecast-weather-container">
 						{
 							weatherReducer.data.daily?.map((dayData:any, index: number)=>

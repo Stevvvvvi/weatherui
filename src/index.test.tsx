@@ -6,11 +6,11 @@ import { Provider } from "react-redux";
 import App from "./App";
 import defaultStore from "./store/configureStore";
 
-describe("testing store update", ()=>{
-	jest.setTimeout(3000);
+describe("testing store update in redux", ()=>{
+	jest.setTimeout(5000);
 	it("should render store content correctly", async ()=>{
 		
-		const {getByTestId, getByText, container, getByLabelText, findByText } = render(
+		const {getByTestId, getByText, container, getByLabelText, findByText, getAllByTestId } = render(
 			<Provider store={defaultStore}>
 				<App />
 			</Provider>
@@ -22,13 +22,8 @@ describe("testing store update", ()=>{
 		expect(countryInput).toBeInTheDocument;
 		fireEvent.change(countryInput, {target:{value:"Sydney"}});
 		fireEvent.click(confirmButton);
-		//const currentWeatherLabel = getByLabelText("current-weather");
-		await new Promise(()=>setTimeout(async () => {
-			const currentWeatherLabel = await findByText(/Current/i);
-			expect(currentWeatherLabel).toHaveTextContent("Current Weather");
-			const forecastWeatherLabel = await findByText(/Forecast/i);
-			expect(forecastWeatherLabel).toHaveTextContent("Dail Forecast");
-		}, 500));
-	
+		expect(getByTestId("loading-progress")).toBeInTheDocument;
+		await new Promise((r) => setTimeout(r, 4000));
+		expect(getAllByTestId("weather-date").length).toBe(9);
 	});
 });

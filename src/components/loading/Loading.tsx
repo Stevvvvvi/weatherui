@@ -7,7 +7,7 @@ const Loading=()=>{
 	const weatherReducer = useSelector((rootState: RootStateType)=>rootState.WeatherReducer);
 	return (
 		<> 
-			{weatherReducer.loading && <LoadingContainer></LoadingContainer>}
+			{weatherReducer.loading && <LoadingContainer data-testid="loading-progress"></LoadingContainer>}
 		</>
 	);
 };

@@ -14,7 +14,7 @@ export const WeatherCardContainer = styled.div<any>`
     cursor: pointer;
     font-weight: 400;
     & .card-text{
-        transform: translateZ(30px);
+        transform: translateZ(35px);
         transform-style: preserve-3d;
         transform-origin: top;
         & .card-icon{
