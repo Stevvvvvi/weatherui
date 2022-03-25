@@ -5,10 +5,11 @@ import thunk from "redux-thunk";
 import { RootStateType } from "../reducers";
 import rootReducer from "../reducers";
 import rootEpic from "../epics";
+import { RootActionType } from "../actions";
 
 const epicMiddleware = createEpicMiddleware<
-  Action<any>,
-  Action<any>,
+  RootActionType,
+  RootActionType,
   RootStateType
 >();
 
@@ -22,7 +23,7 @@ const storeFactory = () =>
 
 const store = storeFactory();
 
-epicMiddleware.run(rootEpic as any);
+epicMiddleware.run(rootEpic);
 
 
 export default store;
