@@ -1,4 +1,3 @@
-import { createAsyncAction } from "typesafe-actions";
 import { GetCityCoodinateFailed, GetCityCoodinateRequest, GetCityWeather, GetCityWeatherFailed, GetCityWeatherFulfilled } from "./actionTypes";
 export type WeatherActionType = GetCityWeatherType 
                             | GetCityWeatherFulfilledType
@@ -32,11 +31,6 @@ type GetCityCoodinateFailedType = {
     payload: string
 }
 
-// export const updateArticleAsync = createAsyncAction(
-// 	"Get_City_Weather",
-// 	"Get_City_Weather_Fulfilled",
-// 	"Get_City_Weather_Failed"
-// )<string, any, string>();
   
 export const getCityWeatherAction = (lat:number, lon:number): GetCityWeatherType => ({ type: GetCityWeather, payload: {lat: lat, lon: lon} });
 export const getCityWeatherFulfilledAction = (payload:any):GetCityWeatherFulfilledType  => ({ type: GetCityWeatherFulfilled, payload });

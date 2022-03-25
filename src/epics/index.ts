@@ -1,7 +1,11 @@
-import { combineEpics } from "redux-observable";
+import { combineEpics, Epic } from "redux-observable";
+import { RootActionType } from "../actions";
+import { RootStateType } from "../reducers";
 import weatherEpic from "./weatherEpic";
 
-const rootEpic = combineEpics<any>(
+export type RootEpic = Epic<RootActionType, RootActionType, RootStateType>;
+
+const rootEpic = combineEpics(
 	...weatherEpic,
 );
 
